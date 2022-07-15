@@ -3,6 +3,7 @@ import "@quasar/extras/roboto-font/roboto-font.css";
 import "@quasar/extras/material-icons/material-icons.css";
 import "@quasar/extras/fontawesome-v6/fontawesome-v6.css";
 import "./styles/_styles.scss";
+import "./registerServiceWorker";
 
 import App from "./App.vue";
 import Markdown from "vue3-markdown-it";
