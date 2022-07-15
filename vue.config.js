@@ -26,7 +26,8 @@ const configs = {
 if (process.env.NODE_ENV === "production") {
   configs.configureWebpack.plugins.push(
     new InjectManifest({
-      swSrc: "./service-worker.js",
+      swSrc: path.join(process.cwd(), "/service-worker.js"),
+      maximumFileSizeToCacheInBytes: 15000000,
     })
   );
 }
