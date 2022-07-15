@@ -63,5 +63,9 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "engines": {
+    "npm": "6.14.15",
+    "node": "14.17.6"
+  }
 }
