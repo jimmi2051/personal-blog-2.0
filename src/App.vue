@@ -54,7 +54,7 @@ export default {
   },
   mounted() {
     const $q = useQuasar();
-    console.log("[DEBUG] ====>", this);
+    // console.log("[DEBUG] ====>", this);
     this.$q = $q;
     this.$q.loading.hide();
     this.$q.loading.hide();

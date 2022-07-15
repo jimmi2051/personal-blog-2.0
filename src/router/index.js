@@ -84,7 +84,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   scrollBehavior: (to, from, savedPosition) => {
-    console.log("to", to);
+    // console.log("to", to);
     if (savedPosition) {
       return savedPosition;
     } else if (to.hash) {

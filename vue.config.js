@@ -1,6 +1,8 @@
 const path = require("path");
 const { defineConfig } = require("@vue/cli-service");
-module.exports = defineConfig({
+const { InjectManifest } = require("workbox-webpack-plugin");
+
+const configs = {
   transpileDependencies: ["quasar"],
 
   pluginOptions: {
@@ -17,5 +19,16 @@ module.exports = defineConfig({
         stream: require.resolve("stream-browserify"),
       },
     },
+    plugins: [],
   },
-});
+};
+
+if (process.env.NODE_ENV === "production") {
+  configs.configureWebpack.plugins.push(
+    new InjectManifest({
+      swSrc: "./service-worker.js",
+    })
+  );
+}
+
+module.exports = defineConfig(configs);
