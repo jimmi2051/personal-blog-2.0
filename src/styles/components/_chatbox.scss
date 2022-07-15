@@ -1,0 +1,236 @@
+.message-box {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 300px;
+  height: 400px;
+  display: none;
+  background-color: #e2e2e2;
+  // padding: 15px;
+  &__header {
+    // text-align: right;
+    background: #000;
+    position: relative;
+    color: white;
+    // margin: 15px;
+    height: 60px;
+    .q-avatar {
+      font-size: 30px;
+    }
+    .block-name {
+      display: inline-block;
+    }
+    .name-user {
+      margin: 0px;
+      display: inline-block;
+
+      padding-left: 10px;
+    }
+    i {
+      cursor: pointer;
+    }
+    input {
+      max-width: 150px;
+    }
+    padding: 15px;
+    .btn-remove {
+      position: absolute;
+      right: 15px;
+      background-color: $light-blue;
+
+      border: none;
+      border-radius: 32px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    p {
+      padding: 0;
+      margin: 0;
+      line-height: 30px;
+      display: inline-block;
+    }
+    .custom-i {
+      display: block;
+      line-height: 30px;
+      float: right;
+      padding-left: 15px;
+    }
+  }
+  &__body {
+    height: calc(100% - 90px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  &__footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 30px;
+    .input-chat {
+      width: 100%;
+      position: relative;
+      padding-left: 5px;
+      line-height: 24px;
+    }
+    .btn-send {
+      position: absolute;
+      right: 1px;
+      background-color: $light-blue;
+      color: white;
+      border: none;
+      height: 30px;
+      width: 30px;
+      cursor: pointer;
+    }
+  }
+  .hyper-link-chat {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+  }
+  &__readmore {
+    text-align: center;
+    color: $light-blue;
+    padding-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  &__users {
+    position: relative;
+    height: calc(100% - 60px);
+    .list-users {
+      // height: calc(100% - 90px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      // width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+      height: 100%;
+      padding: 0px;
+      list-style: none;
+      margin: 0px;
+      padding: 5px;
+      li {
+        padding: 5px;
+        cursor: pointer;
+        position: relative;
+        p {
+          display: inline-block;
+          font-weight: 500;
+          padding-left: 8px;
+        }
+        &:hover {
+          background: rgba(0, 0, 0, 0.2);
+        }
+        i {
+          position: absolute;
+          right: 15px;
+          line-height: 45px;
+          // bottom: 15px;
+        }
+      }
+    }
+  }
+}
+.is-show {
+  display: block !important;
+}
+.show-message {
+  position: fixed;
+  bottom: 30px;
+  right: 15px;
+  // z-index: 999;
+  display: none;
+  i {
+    cursor: pointer;
+    color: $light-blue;
+  }
+  &__btn {
+    background: none;
+    border: none;
+    z-index: 999;
+  }
+}
+body.body--dark {
+  .message-box__body {
+    background-color: #2e2e2e;
+  }
+  .list-users {
+    background-color: #2e2e2e;
+  }
+}
+.call-video {
+  position: fixed;
+  bottom: 25px;
+  left: 30px;
+  h6 {
+    color: red;
+  }
+  .selfviewm .remoteview {
+    width: 400px;
+    height: 200px;
+  }
+}
+.popup-calling {
+  display: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 888;
+  &::after {
+    content: "";
+    background-color: black;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .endcall {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    z-index: 999;
+    color: red;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    font-size: 60px;
+    cursor: pointer;
+  }
+}
+#selfview {
+  width: 200px;
+  height: 100px;
+  top: 100px;
+  position: absolute;
+  right: 60px;
+  z-index: 999;
+}
+#remoteview {
+  width: 60%;
+  height: 60%;
+  top: 200px;
+  position: absolute;
+  right: 35px;
+  left: 35px;
+  margin: 0 auto;
+  z-index: 999;
+}
+.q-message-text-content {
+  p {
+    margin: 0;
+    margin-bottom: 2px;
+  }
+}

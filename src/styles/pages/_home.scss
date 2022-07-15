@@ -1,0 +1,83 @@
+.header-content {
+  font-size: 66px;
+  line-height: 100% !important;
+  font-weight: 700 !important;
+  color: #ffffff;
+}
+.skill {
+  &-hard {
+    padding-right: 15px;
+    @media screen and (min-width: 320px) and (max-width: 991px) {
+      padding: 0px;
+    }
+  }
+  &-soft {
+    padding-left: 15px;
+    @media screen and (min-width: 320px) and (max-width: 991px) {
+      padding: 0px;
+    }
+  }
+  &-title {
+    font-size: 16px;
+    @media screen and (width: 320px) {
+      font-size: 12px !important;
+    }
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      font-size: 14px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      font-size: 16px;
+    }
+    @media screen and (min-width: 992px) and (max-width: 1200px) {
+      font-size: 16px;
+    }
+  }
+}
+.home-page {
+  padding: 15px 30px;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    padding: 15px;
+  }
+  .q-card__section--vert {
+    @media screen and(max-width: 767px) {
+      padding: 0px;
+    }
+  }
+}
+.section1 {
+  &-background {
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      top: 22% !important;
+    }
+  }
+}
+.contact {
+  &-info {
+    padding-right: 15px;
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      padding: 0px;
+    }
+  }
+  &-touch {
+    padding-left: 15px;
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      padding: 0px;
+    }
+  }
+  &-title {
+    font-size: 46px;
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      font-size: 24px;
+    }
+  }
+}
+.text-summary {
+  .text-h5 {
+    @media screen and(max-width: 767px) {
+      font-size: 16px;
+    }
+  }
+}

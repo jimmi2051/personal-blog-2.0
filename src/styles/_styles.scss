@@ -1,0 +1,40 @@
+@import "./colors/colors";
+// Import Quasar Style
+@import "./quasar.variables.scss";
+@import "~quasar-styl";
+@import "~quasar-addon-styl";
+// Import element
+@import "./elements/button";
+@import "./elements/padding";
+@import "./elements/thumbnail";
+
+@import "./components/qitem";
+@import "./components/header";
+@import "./components/footer";
+@import "./components/qtimeline";
+@import "./components/section";
+@import "./components/qprogress";
+@import "./components/body";
+@import "./components/chatbox";
+@import "./components/qcard";
+
+@import "./pages/home";
+@import "./pages/about";
+@import "./pages/blogs";
+@import "./pages/signup";
+@import "./pages/signin";
+@import "./pages/practice";
+@import "./pages/videos";
+
+.fixed-top-custom {
+  z-index: 99999;
+}
+.light-blue {
+  background: $light-blue;
+}
+.blue {
+  background: #7cd1f9;
+}
+.green {
+  color: #33cc33;
+}

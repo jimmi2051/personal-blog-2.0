@@ -1,0 +1,29 @@
+.q-card {
+  &__section {
+    .text-h6 {
+      height: 4rem;
+    }
+    .text-subtitle2 {
+      height: 2.75rem;
+    }
+  }
+}
+.blogs {
+  .q-card {
+    &__section {
+      .text-h6 {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 3rem;
+      }
+      .text-subtitle2 {
+        height: 2.75;
+        overflow: hidden;
+      }
+      .btn-readmore {
+        margin-top: 20px;
+      }
+    }
+  }
+}
