@@ -2,7 +2,7 @@
   <div id="app">
     <q-layout>
       <q-page-container>
-        <Header :change="changeMode" v-if="isShow" />
+        <Header v-if="isShow" />
         <router-view />
         <Footer v-if="isShow" />
       </q-page-container>
@@ -17,15 +17,7 @@
 import Header from "layout/Header.vue";
 import Footer from "layout/Footer.vue";
 import Chatbox from "components/Chatbox.vue";
-import { useQuasar } from "quasar";
-// import { mapActions, mapState } from "vuex";
-// function mapStateToProps(state) {
-//   const data = state.Page.healthCheck.description;
-//   return {
-//     loading: state.Page.healthCheck.loading,
-//     description: data
-//   };
-// }
+// import { useQuasar } from "quasar";
 export default {
   data() {
     return {
@@ -53,17 +45,18 @@ export default {
     // this.$q.dark.set(false);
   },
   mounted() {
-    const $q = useQuasar();
-    // console.log("[DEBUG] ====>", this);
-    this.$q = $q;
+    // const $q = useQuasar();
+
+    // this.$q = $q;
     this.$q.loading.hide();
     this.$q.loading.hide();
   },
   methods: {
     // ...mapActions("Page", ["healthCheck"]),
-    changeMode(value) {
-      this.$q.dark.set(value);
-    },
+    // changeMode(value) {
+    //   console.log("this>", this.$q);
+    //   this.$q.dark.set(value);
+    // },
   },
   // computed: {
   //   ...mapState({

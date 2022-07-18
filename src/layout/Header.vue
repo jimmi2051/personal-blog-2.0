@@ -3,7 +3,7 @@
     <!-- Menu desktop -->
     <q-toolbar class="bg-black text-white shadow-2 gt-sm">
       <!-- <q-btn flat round dense icon="menu" class="q-mr-sm" /> -->
-      <q-item to="/" exact>
+      <q-item to="/#home" exact>
         <q-img
           :src="require('@/assets/images/logo.png')"
           spinner-color="white"
@@ -11,26 +11,14 @@
         />
       </q-item>
       <q-separator dark vertical inset />
-      <q-item to="/#home" exact>
-        <q-btn stretch flat label="NLT" />
-      </q-item>
-
-      <q-separator dark vertical />
-      <q-item exact to="/blogs">
-        <q-btn stretch flat label="Blogs" />
-      </q-item>
-      <q-separator dark vertical />
-      <q-item exact to="/about">
-        <q-btn stretch flat label="About" />
-      </q-item>
-      <q-separator dark vertical />
-      <q-item exact to="/#work">
-        <q-btn stretch flat label="Works" />
-      </q-item>
-      <q-separator dark vertical />
-      <q-item exact to="/#contact">
-        <q-btn stretch flat label="Contact" />
-      </q-item>
+      <q-btn-toggle
+        v-model="activeLink"
+        flat
+        stretch
+        toggle-color="info"
+        :options="leftNav"
+      />
+      <!-- </q-item> -->
       <q-separator dark vertical />
       <q-btn
         type="a"
@@ -68,19 +56,19 @@
       <q-separator dark vertical />
       <q-space />
       <q-separator dark vertical />
-
-      <q-item exact to="/signin" v-if="!store.userProfile.isLogin">
-        <q-btn stretch flat label="Sign In" />
-      </q-item>
-      <q-separator dark vertical v-if="!store.userProfile.isLogin" />
-      <q-item exact to="/signup" v-if="!store.userProfile.isLogin">
-        <q-btn stretch flat label="Sign Up" />
-      </q-item>
+      <q-btn-toggle
+        v-model="activeLink"
+        flat
+        stretch
+        toggle-color="info"
+        :options="rightNav"
+        v-if="!store.userProfile.isLogin"
+      />
       <q-item v-if="store.userProfile.isLogin">
         <q-btn stretch @click="handleSignOut" flat label="Sign Out" />
       </q-item>
       <q-separator dark vertical />
-      <q-toggle v-model="value" @input="change" color="light-blue" />
+      <q-toggle v-model="value" color="light-blue" />
     </q-toolbar>
     <!-- Menu Mobile -->
     <q-toolbar class="bg-black text-white shadow-2 lt-md">
@@ -215,6 +203,7 @@
 <script>
 import AuthStorage from "utils/AuthStorage";
 import { mapActions, mapState } from "vuex";
+import { ref } from "vue";
 
 function mapStateToProps(state) {
   const data = state.User.userProfile;
@@ -240,21 +229,43 @@ export default {
     },
     handleSignOut() {
       this.signOut();
-      if (this.$route.path !== "/") {
-        this.$router.push("/");
+      if (this.$route.path !== "/#home") {
+        this.$router.push("/#home");
       }
-    },
-  },
-  props: {
-    change: {
-      type: Function,
-      required: true,
     },
   },
   computed: {
     ...mapState({
       store: mapStateToProps,
     }),
+  },
+  watch: {
+    value(value) {
+      this.$q.dark.set(value);
+    },
+    activeLink(value) {
+      this.$router.push(value);
+    },
+    "$route.fullPath"(to) {
+      if (to !== this.activeLink) this.activeLink = to;
+    },
+  },
+  setup() {
+    return {
+      activeLink: ref("/#home"),
+
+      leftNav: [
+        { label: "NLT", value: "/#home" },
+        { label: "Blogs", value: "/blogs" },
+        { label: "About", value: "/about" },
+        { label: "Works", value: "/#work" },
+        { label: "Contact", value: "/#contact" },
+      ],
+      rightNav: [
+        { label: "Sign In", value: "/signin" },
+        { label: "Sign Up", value: "/signup" },
+      ],
+    };
   },
   name: "HeaderComponent",
 };

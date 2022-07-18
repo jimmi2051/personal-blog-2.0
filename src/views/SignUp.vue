@@ -9,7 +9,7 @@
           label="Username (*)"
           hint="Username"
           lazy-rules
-          :rules="[val => (val && val.length > 0) || 'Username is required.']"
+          :rules="[(val) => (val && val.length > 0) || 'Username is required.']"
           ref="username"
           name="username"
         />
@@ -20,8 +20,8 @@
           hint="E-mail"
           lazy-rules
           :rules="[
-            val => (val && val.length > 0) || 'Email is required.',
-            isValidEmail
+            (val) => (val && val.length > 0) || 'Email is required.',
+            isValidEmail,
           ]"
           ref="email"
           name="email"
@@ -34,7 +34,7 @@
           hint="Password"
           label="Password (*)"
           lazy-rules
-          :rules="[val => (val && val.length > 0) || 'Password is required.']"
+          :rules="[(val) => (val && val.length > 0) || 'Password is required.']"
           ref="password"
         >
           <template v-slot:append>
@@ -54,10 +54,10 @@
           label="Confirm Password (*)"
           lazy-rules
           :rules="[
-            val => (val && val.length > 0) || 'Confirm password is required.',
-            val =>
+            (val) => (val && val.length > 0) || 'Confirm password is required.',
+            (val) =>
               (val && val.length > 0 && val === password) ||
-              'Password is not match.'
+              'Password is not match.',
           ]"
           ref="confirmpassword"
         >
@@ -104,17 +104,17 @@ function mapStateToProps(state) {
   return {
     loading: state.User.signup.loading,
     data: data,
-    isLogin
+    isLogin,
   };
 }
 export default {
   components: {
-    PageTitle
+    PageTitle,
   },
   meta: {
     // sets document title
     title: "Sign Up",
-    titleTemplate: title => `${title} - DefTnt Blog`
+    titleTemplate: (title) => `${title} - DefTnt Blog`,
   },
   data() {
     return {
@@ -125,7 +125,7 @@ export default {
       isConPwd: true,
       password: "",
       fullname: "",
-      username: ""
+      username: "",
     };
   },
   methods: {
@@ -133,21 +133,21 @@ export default {
 
     handleSignUp(email, username, password, fullname) {
       let payload = {
-        nextErr: err => {
+        nextErr: (err) => {
           this.$q.notify({
             color: "red-5",
             textColor: "white",
             icon: "warning",
-            message: JSON.stringify(err)
+            message: JSON.stringify(err),
           });
         },
-        nextSuccess: res => {
+        nextSuccess: (res) => {
           if (res.jwt) {
             this.$q.notify({
               color: "green-4",
               textColor: "white",
               icon: "cloud_done",
-              message: "Register successfully."
+              message: "Register successfully.",
             });
             this.onReset();
             this.$refs.email.resetValidation();
@@ -159,14 +159,14 @@ export default {
               color: "red-5",
               textColor: "white",
               icon: "warning",
-              message: JSON.stringify(res)
+              message: JSON.stringify(res),
             });
           }
         },
         email,
         username,
         password,
-        fullname
+        fullname,
       };
       this.signUp(payload);
     },
@@ -177,7 +177,7 @@ export default {
           color: "red-5",
           textColor: "white",
           icon: "warning",
-          message: "You need confirm you aren't a bot."
+          message: "You need confirm you aren't a bot.",
         });
       } else {
         // Login
@@ -190,7 +190,8 @@ export default {
       }
     },
     isValidEmail(val) {
-      const emailPattern = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
+      const emailPattern =
+        /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
       return emailPattern.test(val) || "Invalid email";
     },
     onReset() {
@@ -202,12 +203,12 @@ export default {
       this.accept = false;
       this.isPwd = false;
       this.isConPwd = false;
-    }
+    },
   },
   computed: {
     ...mapState({
-      store: mapStateToProps
-    })
-  }
+      store: mapStateToProps,
+    }),
+  },
 };
 </script>

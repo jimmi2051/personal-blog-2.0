@@ -84,7 +84,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   scrollBehavior: (to, from, savedPosition) => {
-    // console.log("to", to);
+    console.log("to", to);
     if (savedPosition) {
       return savedPosition;
     } else if (to.hash) {
@@ -102,15 +102,14 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (
-    to.matched.some((record) => record.meta.requiresAuth) &&
-    !AuthStorage.isLogin
-  ) {
+  console.log("to", to);
+  if (to.meta.requiresAuth && !AuthStorage.isLogin) {
     app.$q.notify({
       message: "Oops! Sorry, You must sign in to view this.",
       type: "negative",
     });
     next({ name: "signin" });
+    console.log("11");
   } else if (
     (to.name === "signin" || to.name === "signup") &&
     AuthStorage.isLogin
@@ -120,12 +119,8 @@ router.beforeEach((to, from, next) => {
       message: "Hola! You're logged in.",
       type: "warning",
     });
+    console.log("22");
   } else next();
 });
-
-// Vue.use(VueAnalytics, {
-//   id: "UA-166102479-1",
-//   router,
-// });
 
 export default router;

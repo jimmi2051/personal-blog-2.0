@@ -9,7 +9,9 @@
           label="Username/Email (*)"
           hint="Username or Email"
           lazy-rules
-          :rules="[val => (val && val.length > 0) || 'Identifier is required.']"
+          :rules="[
+            (val) => (val && val.length > 0) || 'Identifier is required.',
+          ]"
           ref="identifier"
           name="email"
         />
@@ -21,7 +23,7 @@
           hint="Password"
           label="Password (*)"
           lazy-rules
-          :rules="[val => (val && val.length > 0) || 'Password is required.']"
+          :rules="[(val) => (val && val.length > 0) || 'Password is required.']"
           ref="password"
           name="password"
         >
@@ -58,24 +60,24 @@ import { mapActions, mapState } from "vuex";
 function mapStateToProps(state) {
   const isLogin = state.User.userProfile.isLogin;
   return {
-    isLogin
+    isLogin,
   };
 }
 export default {
   components: {
-    PageTitle
+    PageTitle,
   },
   meta: {
     // sets document title
     title: "Sign In",
-    titleTemplate: title => `${title} - DefTnt Blog`
+    titleTemplate: (title) => `${title} - DefTnt Blog`,
   },
   data() {
     return {
       accept: false,
       isPwd: true,
       password: "",
-      identifier: ""
+      identifier: "",
     };
   },
   methods: {
@@ -83,37 +85,37 @@ export default {
 
     handleSignIn(identifier, password) {
       let payload = {
-        nextErr: err => {
+        nextErr: (err) => {
           this.$q.notify({
             color: "red-5",
             textColor: "white",
             icon: "warning",
-            message: JSON.stringify(err)
+            message: JSON.stringify(err),
           });
         },
-        nextSuccess: res => {
+        nextSuccess: (res) => {
           if (res.jwt) {
             this.$q.notify({
               color: "green-4",
               textColor: "white",
               icon: "cloud_done",
-              message: "Login successfully."
+              message: "Login successfully.",
             });
             this.onReset();
             this.$refs.identifier.resetValidation();
             this.$refs.password.resetValidation();
-            this.$router.push("/");
+            this.$router.push("/#home");
           } else {
             this.$q.notify({
               color: "red-5",
               textColor: "white",
               icon: "warning",
-              message: JSON.stringify(res)
+              message: JSON.stringify(res),
             });
           }
         },
         identifier,
-        password
+        password,
       };
       this.signIn(payload);
     },
@@ -124,7 +126,7 @@ export default {
           color: "red-5",
           textColor: "white",
           icon: "warning",
-          message: "You need confirm you aren't a bot."
+          message: "You need confirm you aren't a bot.",
         });
       } else {
         // Login
@@ -137,12 +139,12 @@ export default {
       this.email = "";
       this.accept = false;
       this.isPwd = false;
-    }
+    },
   },
   computed: {
     ...mapState({
-      store: mapStateToProps
-    })
-  }
+      store: mapStateToProps,
+    }),
+  },
 };
 </script>
