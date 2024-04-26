@@ -12,7 +12,7 @@
         href="tel:0385xxxxxx"
         no-shadow
         target="__blank"
-        >(+84) 569363575</q-btn
+        >(+84) 385xxxxxx</q-btn
       >
     </div>
     <!-- <q-separator dark vertical class="q-ml-sm q-mr-sm" inset /> -->

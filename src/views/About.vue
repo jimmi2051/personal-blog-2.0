@@ -12,7 +12,7 @@
               <p class="text-subtitle1 text-bold">GET IN CONTACT</p>
               <p class="text-body1">
                 <span class="text-bold">Mobile:</span>
-                <a href="tel:0385xxxxxx">(+84) 569363575</a>
+                <a href="tel:0385xxxxxx">(+84) 385xxxxxx</a>
                 <br />
                 <span class="text-bold">Email:</span>
                 <a href="mailto:thanhnl0697@gmail.com">thanhnl0697@gmail.com</a>

@@ -70,12 +70,12 @@ export default {
       description: {
         name: "description",
         content:
-          "Hi There, I'm Thanh Nguyen. Software Engineer - Full-stack develop. I have more than a year of experience working with ReactJS & Python Django. Tel: (+84) 569363575 & Email: thanhnl0697@gmail.com",
+          "Hi There, I'm Thanh Nguyen. Software Engineer - Full-stack develop. I have more than a year of experience working with ReactJS & Python Django. Tel: (+84) 385xxxxxx & Email: thanhnl0697@gmail.com",
       },
       keywords: {
         name: "keywords",
         content:
-          "Deftnt Blog, Thanh Ly, Thanh Nguyen Ly, thanhnl0697@gmail.com, (+84) 569363575",
+          "Deftnt Blog, Thanh Ly, Thanh Nguyen Ly, thanhnl0697@gmail.com, (+84) 385xxxxxx",
       },
       equiv: {
         "http-equiv": "Content-Type",
