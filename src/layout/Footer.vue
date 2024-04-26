@@ -9,7 +9,7 @@
       <q-btn
         class="no-padding"
         type="a"
-        href="tel:0569363575"
+        href="tel:0385xxxxxx"
         no-shadow
         target="__blank"
         >(+84) 569363575</q-btn
